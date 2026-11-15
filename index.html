@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Mon application</title>
+</head>
+<body>
+  <div id="app">
+    
+    <!-- Titre principal de ma page-->
+    <h1>{{ title }}</h1>
+
+
+
+    <!-- Recherche: label + input -->
+    <label for="recherche">Recherche</label>
+    <input id="recherche" type="text" v-model="search" placeholder="Rechercher un produit spécifique...">
+    <p>Vous recherchez : {{search }}</p>
+
+    <!-- Section des produits : avec v-for pour parcourir la liste -->
+     <h2>Section des produits</h2>
+
+
+     <!-- chaque produit est concerné par cettre boucle-->
+    <div class="product-card" v-for="product in productsFilter" :key="product.id">
+        {{ product.name }} - {{ product.price }} € - {{product.stock }}
+
+        <p>Quantité : {{ product.quantity }}</p>
+        
+        <!-- affichage conditionnel avec v-if-->
+        <p class="available" v-if="product.stock > 0">Produit disponible</p>
+        <p class="unavailable" v-else>Produit indisponible</p>
+
+
+        <button @click="increaseQuantity(product)">
+            +
+        </button>
+        <button @click="decreaseQuantity(product)">
+            -
+        </button>
+    </div>
+
+    
+    <div class="cart">
+        <h2>Mon Panier</h2>
+        <div  v-for="product in products" :key="product.id">
+        <p v-if="product.quantity > 0">{{ product.name }} - {{ product.quantity }}</p>
+        </div>
+        <p class="cart-total">Prix total pour cette commande : {{ totalPrice }} €</p>
+    </div>
+
+</div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp } = Vue
+    createApp({
+      data() {
+        return {
+            title: "Ma boutique à moi",
+            products: [
+                { id: 0, name: "Chat adulte", price: 100, stock: 0, quantity: 0},
+                { id: 1, name: "Chaton", price: 150, stock: 3, quantity: 0},
+                { id: 2, name: "Croquettes chat adulte", price: 200, stock: 1, quantity: 0},
+                { id: 3, name: "Croquettes chaton", price: 250, stock: 2, quantity: 0}
+            ],
+            search:"",
+
+        }
+
+        },
+        methods: {
+            increaseQuantity(product) {
+                if  (product.quantity < product.stock) {
+                    product.quantity++
+                }
+            },
+            decreaseQuantity(product) {
+                if (product.quantity > 0) {
+                    product.quantity--
+                }
+            },
+            
+            },
+            computed: {
+                productsFilter() { // les produits dont le nom contient la recherche.
+                     return this.products.filter( product =>{ // filter retourne les produits qui corresponde à la recherche
+                        return product.name.toLowerCase().includes(this.search.toLowerCase()) // "le nom de ce produit contient-il la recherche de mon app?"
+                    })
+                },
+
+                totalPrice() {
+                    let total = 0
+                    for (const product of this.products) {
+                        total = total + (product.price * product.quantity)
+                    }
+                    return total
+                }
+            }
+                
+            
+            }).mount('#app')
+  </script>
+</body>
+</html>
