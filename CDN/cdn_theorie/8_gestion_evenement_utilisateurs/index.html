@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Apprendre Vue.js</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{ message }}</p>
+        <button @click="sayHello">Cliquez ici</button>
+        <p>Nombre de clics : {{ clicks }}</p>
+        <button @click="increment">Cliquez-moi</button>
+    </div>
+    <!-- Chargement de Vue.js 3 depuis le CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp } = Vue
+        createApp({
+            data() {
+                return {
+                    message: "Bonjour!",
+                    clicks: 0
+                }
+            },
+            methods: {
+                sayHello() {
+                    alert("Bonjour et bienvenue!")
+                }, // <-- La virgule manquante est ici
+                increment() {
+                    this.clicks++
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

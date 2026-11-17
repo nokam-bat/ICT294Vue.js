@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ma boutique Vue.js</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ title }}</h1>
+
+        <!-- Recherche : v-model -->
+        <input type="text" v-model="search" placeholder="Rechercher un produit...">
+
+        <!-- Liste des produits : v-for -->
+        <h2>Nos produits</h2>
+        <div v-for="product in filteredProducts" :key="product.id">
+            <h3>{{ product.name }}</h3>
+            <p>Prix : {{ product.price }} €</p>
+        </div>
+    </div>
+
+    <!-- Chargement de Vue.js 3 depuis le CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp } = Vue
+        createApp({
+            data() {
+                return {
+                    title: "Ma boutique à moi", // Virgule ajoutée ici
+                    search: "", // Indispensable pour le v-model de l'input
+                    products: [ // Liste d'exemples de produits avec id, name et price
+                        { id: 1, name: "T-shirt coton bio", price: 25 },
+                        { id: 2, name: "Pantalon cargo", price: 55 },
+                        { id: 3, name: "Sweat à capuche", price: 45 }
+                    ]
+                }
+            },
+            computed: {
+                // Filtre automatiquement la liste dès que "search" change
+                filteredProducts() {
+                    return this.products.filter(product => 
+                        product.name.toLowerCase().includes(this.search.toLowerCase())
+                    )
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
