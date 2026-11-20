@@ -83,7 +83,22 @@ export default {
 **Défi 2**
 écrire A warm welcome to my page qui remplace tt dans Home.
 
+j'ai tt supprimé dans `HomeView.vue` et j'ai juste écrit un template avec un titre <h1> qui mettait mon {{ms}}
+et j'ai écrit un script setup où j'ai mis la const msg = "mon message"
 
+```bash
+<template>
+  <div class="home">
+    <h1>{{ msg }}</h1>
+  </div>
+</template>
 
+<script setup>
+const msg = "a warm welcome to my page!";
+</script>
+
+```
+
+=> c'est un enfer, juste un espace fait foirer la compilation
 **Défi 3**
 mettre un message, signé mon nom.
