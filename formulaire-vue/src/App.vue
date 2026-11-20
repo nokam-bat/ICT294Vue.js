@@ -20,6 +20,20 @@
       <input type="text" v-model="nom" placehold="Votre nom">
     </div>
 
+    <!-- Champ email -->
+     <div class="form-group">
+      <label>Adresse email</label>
+
+      <input type="email" v-model="email" placeholder="exemple@email.com">
+     </div>
+
+     <!-- Champ mot de passe-->
+      <div class="form-group">
+        <label>Mot de passe</label>
+
+        <input type="password" v-model="motDePasse" placeholder="Votre mot de passe">
+      </div>
+
     <!-- bouton qui soumet le formulaire-->
     <button type="submit">Envoyer</button>
   </form>
@@ -42,7 +56,9 @@ export default {
   data() {
     return {
       prenom: "",
-      nom: ""
+      nom: "",
+      email: "",
+      motDePasse: ""
     }
   },
   methods: {

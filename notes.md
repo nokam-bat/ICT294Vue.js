@@ -21,7 +21,9 @@ Dans src/App.vue
 <button> permet de soumettre le forumulaire
 `@submit` écoute l'événement de soumission
 `.prevent` empêche le rechargement de la page.
+
 <form `@submit.prevent="envoyerFormulaire">` appelle une méthode Vue qu'on va créer.
+=> ça va empêcher la page de recharger pendant qu'elle reçoit la soumission du formulaire, en appelant la méthode envoyerFormulaire.
 
 **Relier les champs avec v-model:**
 `v-model=""` va dans le input entre type et placeholder. il petmet de synchroniser automatiquement le champ HTML avec une propriété. Si l'utilisateur écrit Marie, alors prenom dans data() est changé en Marie.
@@ -30,7 +32,7 @@ Dans src/App.vue
 avec h3 et des p dans un div.
 
 **Gérer l'envoi du formulaire - intecepter la soumussion du formulaire**
-@submit.prevent="methodqu'onvacréerdansmethods"
+@submit.prevent="envoyerFormulaire"
 **Créer la méthode dans methods dans script**
 `methods: {}`
 `alert()` va afficher une notification.
@@ -38,4 +40,6 @@ avec h3 et des p dans un div.
 
 **Ajouter différents champs de types différents**
 `type="email"`          (ajouter dans data() { email: ''})
-`type="password"` 
+`type="password"` v-model="motDePasse" motDePasse sera dans data() et password est un attribut vue?
+
+**Liste déroulante select**
