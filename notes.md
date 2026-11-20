@@ -102,3 +102,41 @@ const msg = "a warm welcome to my page!";
 => c'est un enfer, juste un espace fait foirer la compilation
 **Défi 3**
 mettre un message, signé mon nom.
+Le corrigé de la prof dit de créer un composant `NoorName` dans `components`.
+dans mon `NoorName.vue` je mets juste:
+```bash
+
+<template>
+    <p>Noor</p>
+</template>
+```
+et je modifie `HomeView.vue en ajoutant la balise `<NoorName />` dans le template et je fais l'import dans le script.
+
+*Dans NoorName.vue dans components:*
+```bash
+<template>
+  <h1>Noor</h1>
+</template>
+
+```
+*Dans HomeView.vue dans views:*
+```bash
+<template>
+  <div class="home">
+    <h1>{{ msg }}</h1>
+    <NoorName />
+  </div>
+</template>
+
+<script setup>
+import NoorName from "@/components/NoorName.vue";
+const msg = "a warm welcome to my page!";
+</script>
+
+```
+
+
+**en cas de problème d'affichage, se mettre dans le bon dossier:** 
+`cd real-world-vue`
+et taper la commande de correction des espacements:
+`npm run lint -- --fix`
