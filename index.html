@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer une application Hello world</title>
+</head>
+<body>
+
+    <!-- L'élément HTML qui va accueillir notre application-->
+    <div id="app">
+        <h1>{{ message }}</h1>
+    </div>
+     
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    message: "MiaouMiaouMiaou"
+                }
+            }
+        }).mount("#app")
+    </script>
+
+
+</body>
+</html>
