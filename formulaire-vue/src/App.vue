@@ -7,11 +7,14 @@
     </p>
   </div>
   <form @submit.prevent="envoyerFormulaire">
+    <p v-if="erreur" class="error">
+      {{ erreur }}
+    </p>
 
     <!-- champ pour le prénom, avec v-model pour synchroniser avec data() -->
     <div clas="form-group">
       <label>Prénom</label>
-      <input type="text" v-model="prenom" placeholder="Votre prénom">
+      <input type="text" v-model="prenom" placeholder="Votre prénom" required >
     </div>
 
     <!-- champ pour le nom de famille, avec v-model pour synchroniser avec data() -->
@@ -24,7 +27,7 @@
      <div class="form-group">
       <label>Adresse email</label>
 
-      <input type="email" v-model="email" placeholder="exemple@email.com">
+      <input type="email" v-model="email" placeholder="exemple@email.com" required>
      </div>
 
      <!-- Champ mot de passe-->
@@ -33,6 +36,66 @@
 
         <input type="password" v-model="motDePasse" placeholder="Votre mot de passe">
       </div>
+
+      <!-- champ pour la sélection de plusieurs choix-->
+      <div class="form-group">
+        <label>Votre pays</label>
+        <select v-model="pays">
+          <option value="">Choisissez un pays</option>
+          <option value="Suisse">Suisse</option>
+          <option value="France">France</option>
+          <option value="Belgique">Belgique</option>
+          <option value="Canada">Canada</option>
+       </select>
+      </div> 
+
+      <!-- Champ des boutons radio qui permettent de sélectionner une seule option-->
+       <div class="form-group">
+        <label>Genre</label>
+        <label>
+          <input type="radio" value="Femme" v-model="genre">
+          Femme
+        </label>
+
+        <label type="radio" value="Homme" v-model="genre">
+          Homme
+        </label>
+        
+        <label type="radio" value="Autre" v-model="genre">
+          Autre
+        </label>
+       </div>
+
+       <!-- chap pour les cases à cocher checkbox-->
+        <div class="form-group">
+          <label>Vos loisirs</label>
+          
+          <label>
+            <input type="checkbox" value="Sport" v-model="loisirs">
+            Sport
+          </label>
+
+          <label>
+            <input type="checkbox" value="Musique" v-model="loisirs">
+            Musique
+          </label>
+
+          <label>
+            <input type="checkbox" value="Lecture" v-model="loisirs">
+            Lecture
+          </label>
+        </div>      
+
+        <!-- Zone de texte-->
+         <div class="form-group">
+          <label>Votre message</label>
+
+          <textarea
+          v-model="message"
+          placeholder="Écrivez votre message..."
+          rows="4"
+          ></textarea>
+         </div>
 
     <!-- bouton qui soumet le formulaire-->
     <button type="submit">Envoyer</button>
@@ -58,14 +121,25 @@ export default {
       prenom: "",
       nom: "",
       email: "",
-      motDePasse: ""
+      motDePasse: "",
+      pays: "",
+      genre: "",
+      loisirs: [],
+      message: "",
+      erreur: "",
+      formulaireEnvoye: false
     }
   },
   methods: {
     envoyerFormulaire() {
-      alert(
-        'Bonjour ' + this.prenom + '' + this.nom  // on utilise .this pour utiliser des données du composant.
-      )
+
+      if (this.prenom.length <2) {
+        alert('Le prénom doit contenir au moins 2 caractères')
+        return // return sort
+      }
+
+      this.erreur = "" // else implicite
+      this.formulaireEnvoye = true
     }
   }
 }
