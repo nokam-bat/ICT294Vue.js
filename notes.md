@@ -57,9 +57,33 @@ c'est là que l'app sera montée (le bordel, dans public carrément??)
 Mettre mon nom avec un msg, i guess?
 Dans HomeView.vue je remplace HelloWorld par Noor et je modifie le message.
 
+Résultat
+```bash
+<template>
+  <div class="home">
+    <img alt="Vue logo" src="../assets/logo.png" />
+    <Noor msg="Welcome to Vue.js, Noor" />
+  </div>
+</template>
+
+<script>
+// @ is an alias to /src
+import Noor from "@/components/HelloWorld.vue";
+
+export default {
+  name: "HomeView",
+  components: {
+    Noor,
+  },
+};
+</script>
+
+```
 
 **Défi 2**
 écrire A warm welcome to my page qui remplace tt dans Home.
+
+
 
 **Défi 3**
 mettre un message, signé mon nom.
