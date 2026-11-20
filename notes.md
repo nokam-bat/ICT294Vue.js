@@ -55,7 +55,7 @@ c'est là que l'app sera montée (le bordel, dans public carrément??)
 
 **Défi 1**
 Mettre mon nom avec un msg, i guess?
-
+Dans HomeView.vue je remplace HelloWorld par Noor et je modifie le message.
 
 
 **Défi 2**
