@@ -140,3 +140,6 @@ const msg = "a warm welcome to my page!";
 `cd real-world-vue`
 et taper la commande de correction des espacements:
 `npm run lint -- --fix`
+
+
+**Mes exos étaient faux, je viens de trouver le dossier src du corrigé de la prof...*
