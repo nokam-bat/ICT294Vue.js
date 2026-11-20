@@ -143,3 +143,46 @@ et taper la commande de correction des espacements:
 
 
 **Mes exos étaient faux, je viens de trouver le dossier src du corrigé de la prof...*
+Ce que j'aurais du faire:
+
+créer dans `src/components/` *`NoorPage.vue` avec dedans:
+```bash
+<!-- eslint-disable prettier/prettier -->
+<template><h1>A warm welcome to my page !</h1></template>
+```
+
+Et créer dans `src/views/` `NoorView.vue` avec dedans:
+
+```bash
+
+<template>
+  <NoorPage />
+</template>
+
+<script>
+// @ is an alias to /src
+import NoorPage from "@/components/NoorPage.vue";
+
+export default {
+  name: "NoorView",
+  components: {
+    NoorPage,
+  },
+};
+</script>
+
+```
+
+Enfin dans `src/router/` `index.js`
+```bash
+import NoorView from "@/views/NoorView.vue";
+
+
+const routes = [
+{
+    path: "/noor",
+    name: "noor",
+    component: NoorView,
+  },
+```
+
