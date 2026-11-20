@@ -1,7 +1,10 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import Bonjour from './components/Bonjour.vue'
 </script>
 
 <template>
-  <HelloWorld />
+  <div>
+    <h1>Mon application Vue.js</h1>
+    <Bonjour />
+  </div>
 </template>
